@@ -1,26 +1,18 @@
 <div class="container">
-  <h1>{{ title.toUppercase() }}</h1>
+  <h2>{{ title.toUpperCase() }}</h2>
 
-  <!-- ngModel without FormsModule -->
-  <input [(ngModel)]="username" placeholder="Enter name" />
+  <input [(ngModel)]="username" />
 
-  <!-- missing method call -->
-  <button (click)="submitForm">Submit</button>
+  <button (click)="submitForm()">Submit</button>
 
-  <!-- async pipe misuse -->
-  <p>User Count: {{ users$ | async.length }}</p>
+  <p>Total Users: {{ users.length }}</p>
 
-  <!-- property missing -->
-  <p>{{ nonExistingProperty }}</p>
-
-  <!-- wrong boolean comparison -->
-  <div *ngIf="isLoggedIn == 'true'">
-    Welcome {{ username }}
+  <div *ngIf="isLoggedIn">
+    Logged In!
   </div>
 
-  <!-- invalid trackBy syntax -->
   <ul>
-    <li *ngFor="let user of users; trackBy user.id">
+    <li *ngFor="let user of users; trackBy: trackById">
       {{ user.name }}
     </li>
   </ul>
