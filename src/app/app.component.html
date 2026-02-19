@@ -1,19 +1,20 @@
-<div class="container">
-  <h2>{{ title.toUpperCase() }}</h2>
+<div>
 
-  <input [(ngModel)]="username" />
+  <h1>{{ title.toUpperCase() }}</h1>
 
-  <button (click)="submitForm()">Submit</button>
+  <!-- unsafe null access -->
+  <p>User: {{ user.name }}</p>
 
-  <p>Total Users: {{ users.length }}</p>
+  <!-- old click syntax -->
+  <button on-click="changeTitle()">
+    Change Title
+  </button>
 
-  <div *ngIf="isLoggedIn">
-    Logged In!
-  </div>
-
+  <!-- ngFor without trackBy -->
   <ul>
-    <li *ngFor="let user of users; trackBy: trackById">
-      {{ user.name }}
+    <li *ngFor="let item of items">
+      {{ item }}
     </li>
   </ul>
+
 </div>
